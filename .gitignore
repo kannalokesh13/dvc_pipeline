@@ -6,3 +6,4 @@ runs*
 config.py
 __pycache__/
 *.pyc
+models/__pycache__/
