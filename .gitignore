@@ -3,3 +3,6 @@
 *.onnx
 artifacts*
 runs*
+config.py
+__pycache__/
+*.pyc
