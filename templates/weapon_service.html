@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weapon Service</title>
+</head>
+<body>
+    <h1><b>Weapon Service</b></h1>
+
+    <!-- Upload Data for Training -->
+    <h2>Upload Data for Training</h2>
+    <form action="/weapon_service/upload_data" method="POST" enctype="multipart/form-data">
+        <label for="training_data">Upload data:</label>
+        <input type="file" name="data_folder" webkitdirectory directory required>
+        <br><br>
+        <button type="submit">Upload Data</button>
+    </form>
+
+    <!-- Download Data -->
+    <h2>Download Data</h2>
+    <form action="/weapon_service/download_data" method="POST">
+        <label for="version">Choose a version:</label>
+        <select id="version" name="version">
+            {% for version in versions %}
+                
+                <option value="{{ version }}">{{ version }}</option>
+            {% endfor %}
+        </select>
+        <br><br>
+        <button type="submit" >Download</button><br><br>
+    
+    </form>
+
+    <!-- Train YOLOv8 and YOLOv9 Model -->
+    <h2>Train Weapon Model</h2>
+    <form action="/weapon_service/train" method="POST" enctype="multipart/form-data">
+        <label for="yolo_model">Weapon Training:</label>
+        <button type="submit">Train</button>
+    </form>
+    <!-- Convert YOLOv8  and YOLOv9 Model -->
+    <h2>Convert Weapon Model</h2>
+    <form action="/weapon_service/convert" method="POST" enctype="multipart/form-data">
+        <label for="yolo_model">Weapon Model Conversion:</label>
+        <button type="submit">Convert</button>
+    </form>
+
+
+    
+</body>
+</html>

@@ -1,0 +1,9 @@
+FROM nvcr.io/nvidia/tensorrt:23.03-py3
+RUN apt-get update && apt-get install -y \
+    libgl1-mesa-glx \
+    libglib2.0-0
+WORKDIR /workspace
+COPY . /workspace
+COPY tensorrt_infer_trt.py /workspace/
+RUN pip install -r requirements.txt
+CMD ["python3", "/workspace/tensorrt_infer_trt.py"]

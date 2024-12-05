@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Model Conversion</title>
+</head>
+<body>
+
+    <!-- Convert YOLOv8 Model to ONNX -->
+    <h2>Convert YOLOv8 Model to ONNX</h2>
+    <form action="/weapon_service/convert_onnx" method="POST" enctype="multipart/form-data">
+        <label for="yolo_model_onnx">YOLOv8 Model (.pt):</label>
+        <input type="file" name="yolo_model" accept=".pt" required>
+        <br><br>
+        <button type="submit">Convert to ONNX</button>
+    </form>
+
+    <!-- Convert YOLOv8 Model to TensorRT -->
+    <h2>Convert YOLOv8 Model to TensorRT</h2>
+    <form action="/weapon_service/convert_tensorrt" method="POST" enctype="multipart/form-data">
+        <label for="yolo_model_tensorrt">YOLOv8 Model (.pt):</label>
+        <input type="file" name="yolo_model" accept=".pt" required>
+        <br><br>
+        <button type="submit">Convert to TensorRT</button>
+    </form>
+    <!-- Convert YOLOv9 Model to ONNX -->
+    <h2>Convert YOLOv9 Model to ONNX</h2>
+    <form action="/weapon_service/convert_onnx_v9" method="POST" enctype="multipart/form-data">
+        <label for="yolov9_model_onnx">YOLOv9 Model (.pt):</label>
+        <input type="file" name="yolo_model" accept=".pt" required>
+        <br><br>
+        <button type="submit">Convert to ONNX</button>
+    </form>
+
+    <!-- Convert YOLOv8 Model to TensorRT -->
+    <h2>Convert YOLOv9 Model to TensorRT</h2>
+    <form action="/weapon_service/convert_tensorrt_v9" method="POST" enctype="multipart/form-data">
+        <label for="yolov9_model_tensorrt">YOLOv9 Model (.pt):</label>
+        <input type="file" name="yolo_model" accept=".pt" required>
+        <br><br>
+        <button type="submit">Convert to TensorRT</button>
+    </form>
+
+</body>
+</html>

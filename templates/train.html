@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Training Model</title>
+</head>
+<body>
+    <h1>Training Model</h1>
+    <form method="POST" action="/weapon_service/training">
+        <label>Model File</label>
+    <select name="model">
+        <option value="yolov8n">YOLOv8n</option>
+        <option value="yolov8m">YOLOv8m</option>
+        <option value="yolov8s">YOLOv8s</option>
+        <option value="yolov8l">YOLOv8l</option>
+        <option value="yolov8x">YOLOv8x</option>
+        <option value="yolov9s">YOLOv9s</option>
+        <option value="yolov9t">YOLOv9t</option>
+        <option value="yolov9m">YOLOv9m</option>
+        <option value="yolov9c">YOLOv9c</option>
+        <option value="yolov9e">YOLOv9e</option>
+    </select>
+    <br><br>
+        <label>Epochs</label>
+        <input type="text" name="epochs"><br><br>
+        <label>Image Size</label>
+        <input type="text" name="imgs"><br><br>
+        <button type="submit">Start Training</button>
+     
+    </form>
+</body>
+</html>

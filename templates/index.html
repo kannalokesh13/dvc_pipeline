@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SecureLive Services</title>
+</head>
+
+<body>
+    <h1>SecureLive Services</h1>
+    <form action="/select_service" method="POST">
+        <label for="service">Choose a service:</label>
+        <select name="service" id="service" required>
+            <option value="" disabled selected>Select a service</option>
+            <option value="weapon_service">Weapon Service</option>
+            <option value="vehicle_service">Vehicle Service</option>
+            <option value="tracking_service">Tracking Service</option>
+            
+        </select>
+        <br><br>
+        <button type="submit">Go</button>
+    </form>
+</body>
+</html>
