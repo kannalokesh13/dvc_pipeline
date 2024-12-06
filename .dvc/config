@@ -1,4 +1,5 @@
 [core]
-    remote = local_db
-['remote "local_db"']
-    url = C:\Users\LokeshKanna\Downloads\dvc_database_version_3
+    remote = remote_database
+['remote "remote_database"']
+    url = azure://test/temp_training/custom_dataset/version_9
+    account_name = matdndbserver
