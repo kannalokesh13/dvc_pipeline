@@ -45,7 +45,19 @@
         <button type="submit">Convert</button>
     </form>
 
+    <!-- Send Data to CSV -->
+     <h2>Send Data To CSV</h2>
+     <form action="/weapon_service/add_data_csv" method="POST">
+        <label>commit msg/tag version</label><br><br>
+        <input type="text" name="version"><br><br>
+        <button type="submit">SEND</button>
+     </form>
 
+     <!-- Download CSV File -->
+      <h2>Download CSV</h2>
+      <form action="/weapon_service/download_csv" method="POST">
+        <button type="submit">DOWNLOAD CSV</button>
+      </form>
     
 </body>
 </html>
