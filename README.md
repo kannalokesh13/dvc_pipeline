@@ -32,19 +32,19 @@ To train the model using the downloaded dataset, click on the Train button. This
 
 - YOLOv8
 
--- YOLOv8n
--- YOLOv8m
--- YOLOv8s
--- YOLOv8l
--- YOLOv8x
+  - YOLOv8n
+  - YOLOv8m
+  - YOLOv8s
+  - YOLOv8l
+  - YOLOv8x
 
 - YOLOv9
 
--- YOLOv9s
--- YOLOv9t
--- YOLOv9m
--- YOLOv9c
--- YOLOv9e
+  - YOLOv9s
+  - YOLOv9t
+  - YOLOv9m
+  - YOLOv9c
+  - YOLOv9e
 
 Next, specify the number of epochs for training and the desired image size for the model. Once all selections are made, click on the Start Train button to begin the training process. Once after training got completed, you can download the model.
 
@@ -55,10 +55,10 @@ To convert the PyTorch model into ONNX or TensorRT format, click on the Convert 
 
 - For YOLOv8 Models:
 
--- Select the desired model from the YOLOv8 section.
--- Click on the Convert to ONNX button to convert the PyTorch model to the ONNX format.
--- Once the conversion is complete, you can test the ONNX model by performing inference on a sample image.
--- Similarly, you can convert the model to the TensorRT format by selecting the Convert to TensorRT option.
+  - Select the desired model from the YOLOv8 section.
+  - Click on the Convert to ONNX button to convert the PyTorch model to the ONNX format.
+  - Once the conversion is complete, you can test the ONNX model by performing inference on a sample image.
+  - Similarly, you can convert the model to the TensorRT format by selecting the Convert to TensorRT option.
 
 - For YOLOv9 Models:
 
