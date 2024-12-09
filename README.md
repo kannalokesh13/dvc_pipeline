@@ -62,8 +62,8 @@ To convert the PyTorch model into ONNX or TensorRT format, click on the Convert 
 
 - For YOLOv9 Models:
 
-Follow the same steps as for YOLOv8. Select the desired model from the YOLOv9 section, and choose the appropriate conversion option.
-Once the conversion process is completed, you can test the converted model by inferencing with a sample image.
+  Follow the same steps as for YOLOv8. Select the desired model from the YOLOv9 section, and choose the appropriate conversion option.
+  Once the conversion process is completed, you can test the converted model by inferencing with a sample image.
 
 ![plot](./images/Screenshot%202024-12-09%20131627.png)
 
