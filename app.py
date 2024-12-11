@@ -21,6 +21,9 @@ import cv2
 from pathlib import Path
 from io import BytesIO
 from yolov9 import YOLOv9
+import uuid
+from datetime import datetime
+import csv
 
 
 app = Flask(__name__)
@@ -154,6 +157,29 @@ def get_latest_train_folder(base_path="./runs/detect/"):
         return os.path.join(base_path, latest_folder)
     return None
 
+def add_data_to_csv(unique_id, created_time, location):
+
+    csv_file_path = "./output_data.csv"
+    if isinstance(created_time, (int, float)):  
+        created_time = datetime.fromtimestamp(created_time)
+    
+    if isinstance(created_time, datetime):  # Ensure it's a datetime object
+        created_time = created_time.strftime('%Y-%m-%d %H:%M:%S')
+    
+
+    file_exists = os.path.isfile(csv_file_path)
+    
+    
+    data = [created_time, unique_id, location]
+    
+    with open(csv_file_path, mode='a', newline='') as file:
+        writer = csv.writer(file)
+    
+        if not file_exists:
+            writer.writerow(['created_time', 'Id', 'location'])
+
+        writer.writerow(data)
+
 def zip_folder(folder_path, zip_stream):
     """Compress a folder into a zip archive."""
     with zipfile.ZipFile(zip_stream, 'w', zipfile.ZIP_DEFLATED) as zf:
@@ -203,15 +229,15 @@ def training():
     if request.method == 'POST':
 
         model_file = request.form.get('model')
-        epochs = request.form.get('epochs')
-        image_size = request.form.get('imgs')
+        # epochs = request.form.get('epochs')
+        # image_size = request.form.get('imgs')
         model_file = model_file+".pt"
-        # Load a model
-        model = YOLO(model_file)  # load a pretrained model (recommended for training)
-        # Train the model
-        results = model.train(data="./artifacts/data/det_data.yaml", epochs=int(epochs), imgsz=image_size)  #change this one to artifacts dir
-        # Path to the best weights (typically saved in the 'runs/train/exp/weights' folder)
-        # Find the latest training folder
+        # # Load a model
+        # model = YOLO(model_file)  # load a pretrained model (recommended for training)
+        # # Train the model
+        # results = model.train(data="./artifacts/data/det_data.yaml", epochs=int(epochs), imgsz=image_size)  #change this one to artifacts dir
+        # # Path to the best weights (typically saved in the 'runs/train/exp/weights' folder)
+        # # Find the latest training folder
         latest_folder = get_latest_train_folder(base_path="./runs/detect/")
         if latest_folder:
             # Path to the best weights
@@ -222,6 +248,11 @@ def training():
             artifacts_model_dir = f'./artifacts/models/yolo/{model_file}'
             os.makedirs(artifacts_model_dir, exist_ok=True)
             shutil.copy(best_weights_path, artifacts_model_dir)
+
+            created_time = os.path.getctime(best_weights_path)
+            unique_id = str(uuid.uuid4())
+            add_data_to_csv(unique_id, created_time, best_weights_path)
+            
             # Check if the best weights file exists
             if os.path.exists(best_weights_path):
                 # Provide download option after training
