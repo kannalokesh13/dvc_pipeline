@@ -229,15 +229,15 @@ def training():
     if request.method == 'POST':
 
         model_file = request.form.get('model')
-        # epochs = request.form.get('epochs')
-        # image_size = request.form.get('imgs')
+        epochs = request.form.get('epochs')
+        image_size = request.form.get('imgs')
         model_file = model_file+".pt"
-        # # Load a model
-        # model = YOLO(model_file)  # load a pretrained model (recommended for training)
-        # # Train the model
-        # results = model.train(data="./artifacts/data/det_data.yaml", epochs=int(epochs), imgsz=image_size)  #change this one to artifacts dir
-        # # Path to the best weights (typically saved in the 'runs/train/exp/weights' folder)
-        # # Find the latest training folder
+        # Load a model
+        model = YOLO(model_file)  # load a pretrained model (recommended for training)
+        # Train the model
+        results = model.train(data="./artifacts/data/det_data.yaml", epochs=int(epochs), imgsz=image_size)  #change this one to artifacts dir
+        # Path to the best weights (typically saved in the 'runs/train/exp/weights' folder)
+        # Find the latest training folder
         latest_folder = get_latest_train_folder(base_path="./runs/detect/")
         if latest_folder:
             # Path to the best weights
