@@ -5,7 +5,7 @@ from ultralytics import YOLO
 import zipfile
 from uploading_version2 import process_data_folder
 from downloading_version2 import process_output_folder
-from config import list_available_versions, list_existing_versions, download_all_blobs
+from config import list_available_versions, list_existing_versions, download_all_blobs, upload_csv, download_csv
 from werkzeug.exceptions import RequestEntityTooLarge
 from werkzeug import Request
 import shutil
@@ -24,7 +24,7 @@ from yolov9 import YOLOv9
 import uuid
 from datetime import datetime
 import csv
-
+import pandas as pd
 
 app = Flask(__name__)
 
@@ -157,7 +157,7 @@ def get_latest_train_folder(base_path="./runs/detect/"):
         return os.path.join(base_path, latest_folder)
     return None
 
-def add_data_to_csv(unique_id, created_time, location):
+def add_data_to_csv(unique_id, created_time, location, results):
 
     csv_file_path = "./output_data.csv"
     if isinstance(created_time, (int, float)):  
@@ -170,15 +170,18 @@ def add_data_to_csv(unique_id, created_time, location):
     file_exists = os.path.isfile(csv_file_path)
     
     
-    data = [created_time, unique_id, location]
+    data = [created_time, unique_id, location, results[0], results[1], results[2], results[3], results[4], results[5], results[6]]
     
     with open(csv_file_path, mode='a', newline='') as file:
         writer = csv.writer(file)
     
         if not file_exists:
-            writer.writerow(['created_time', 'Id', 'location'])
+            writer.writerow(['created_time', 'Commit_msg / Id', 'location', 'Train/Box_loss', 'Train/Cls_loss', 'Metrics/Precision(B)', 'Metrics/Recall(B)', 'Metrics/mAP50(B)', 'Val/Box_loss', 'Val/Cls_loss'])
 
         writer.writerow(data)
+
+    upload_csv(csv_file_path)
+
 
 def zip_folder(folder_path, zip_stream):
     """Compress a folder into a zip archive."""
@@ -283,6 +286,61 @@ def download_best_weights():
             return "No best.pt file found in the latest training folder!"
     else:
         return "No training folder found!"
+    
+@app.route('/weapon_service/add_data_csv', methods=['POST'])
+def add_data_csv():
+    if request.method == "POST":
+        latest_folder = get_latest_train_folder(base_path="./runs/detect/")
+        if latest_folder:
+            # Path to the best weights
+            best_weights_path = os.path.join(latest_folder, "weights/best.pt")
+
+            created_time = os.path.getctime(best_weights_path)
+            commit_msg = request.form.get('version')
+            
+            csv_file_path = os.path.join(latest_folder, "results.csv")
+            data = pd.read_csv(csv_file_path)
+            result = data['time'].iloc[-1]
+            train_box_loss = data['train/box_loss'].iloc[-1]
+            train_cls_loss = data['train/cls_loss'].iloc[-1]
+            m_precision = data['metrics/precision(B)'].iloc[-1]
+            m_recall = data['metrics/recall(B)'].iloc[-1]
+            map_50 = data['metrics/mAP50(B)'].iloc[-1]
+            val_box_loss = data['val/box_loss'].iloc[-1]
+            val_cls_loss = data['val/cls_loss'].iloc[-1]
+
+            result = [data['train/box_loss'].iloc[-1], data['train/cls_loss'].iloc[-1], data['metrics/precision(B)'].iloc[-1], data['metrics/recall(B)'].iloc[-1], data['metrics/mAP50(B)'].iloc[-1], data['val/box_loss'].iloc[-1], data['val/cls_loss'].iloc[-1]]
+            print(result)
+            print(commit_msg)
+
+            add_data_to_csv(commit_msg, created_time, best_weights_path, result)
+
+
+
+            return '''
+                    <h1>Data Addition completed!</h1>
+                    <p>You can check the output_data.csv file .</p>
+                    
+                '''
+            
+        else:
+            return "No Latest folder found!"
+
+
+@app.route('/weapon_service/download_csv', methods=['POST'])
+def download_csv_data():
+    if request.method=="POST":
+        local_folder = './'
+        download_csv(local_folder)
+
+        return '''
+                    <h1>Data Downlaoding completed!</h1>
+                    <p>You can check the output_data.csv file .</p>
+                    
+                '''
+    else:
+        return "No Downloaded File!"
+        
 
 
 @app.route('/weapon_service/convert', methods=['POST'])

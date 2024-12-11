@@ -1,2 +1,4 @@
-created_time,Id,location
-2024-12-09 11:17:42,5c3967fb-2803-4ef0-a4e7-679cbbfc2997,./runs/detect/train4\weights/best.pt
+created_time,Commit_msg / Id,location,Train/Box_loss,Train/Cls_loss,Metrics/Precision(B),Metrics/Recall(B),Metrics/mAP50(B),Val/Box_loss,Val/Cls_loss
+2024-12-11 12:51:52,v6.0,./runs/detect/train5\weights/best.pt,1.14505,2.46192,0.45517,1,0.47926,0.86618,2.01633
+2024-12-11 12:51:52,v7.0,./runs/detect/train5\weights/best.pt,1.14505,2.46192,0.45517,1,0.47926,0.86618,2.01633
+2024-12-11 12:51:52,dev2.0 extra_commit,./runs/detect/train5\weights/best.pt,1.14505,2.46192,0.45517,1,0.47926,0.86618,2.01633
