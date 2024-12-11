@@ -194,12 +194,12 @@ def download_data():
     versions = list_available_versions()
     if request.method == 'POST':
 
-        # version = request.form.get('version')
-        # local_download_folder = './test/'
-        # download_all_blobs(local_download_folder,version)
-        # output_folder_path = './test/'
+        version = request.form.get('version')
+        local_download_folder = './test/'
+        download_all_blobs(local_download_folder,version)
+        output_folder_path = './test/'
         target_folder = './test1/'
-        # process_output_folder(output_folder_path, target_folder)
+        process_output_folder(output_folder_path, target_folder)
 
 
         artifacts_data_dir = './artifacts/data'
