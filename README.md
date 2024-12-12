@@ -32,7 +32,6 @@ To train the model using the downloaded dataset, click on the Train button. This
 
 - YOLOv8
 
-<<<<<<< HEAD
   - YOLOv8n
   - YOLOv8m
   - YOLOv8s
@@ -46,21 +45,6 @@ To train the model using the downloaded dataset, click on the Train button. This
   - YOLOv9m
   - YOLOv9c
   - YOLOv9e
-=======
-    - YOLOv8n
-    - YOLOv8m
-    - YOLOv8s
-    - YOLOv8l
-    - YOLOv8x
-
-- YOLOv9
-
-    - YOLOv9s
-    - YOLOv9t
-    - YOLOv9m
-    - YOLOv9c
-    - YOLOv9e
->>>>>>> dd9cb9e (new commit)
 
 Next, specify the number of epochs for training and the desired image size for the model. Once all selections are made, click on the Start Train button to begin the training process. Once after training got completed, you can download the model.
 
@@ -71,7 +55,6 @@ To convert the PyTorch model into ONNX or TensorRT format, click on the Convert 
 
 - For YOLOv8 Models:
 
-<<<<<<< HEAD
   - Select the desired model from the YOLOv8 section.
   - Click on the Convert to ONNX button to convert the PyTorch model to the ONNX format.
   - Once the conversion is complete, you can test the ONNX model by performing inference on a sample image.
@@ -81,27 +64,12 @@ To convert the PyTorch model into ONNX or TensorRT format, click on the Convert 
 
   Follow the same steps as for YOLOv8. Select the desired model from the YOLOv9 section, and choose the appropriate conversion option.
   Once the conversion process is completed, you can test the converted model by inferencing with a sample image.
-=======
-    - Select the desired model from the YOLOv8 section.
-    - Click on the Convert to ONNX button to convert the PyTorch model to the ONNX format.
-    - Once the conversion is complete, you can test the ONNX model by performing inference on a sample image.
-    - Similarly, you can convert the model to the TensorRT format by selecting the Convert to TensorRT option.
-
-- For YOLOv9 Models:
-
-    Follow the same steps as for YOLOv8. Select the desired model from the YOLOv9 section, and choose the appropriate conversion option.
-    Once the conversion process is completed, you can test the converted model by inferencing with a sample image.
->>>>>>> dd9cb9e (new commit)
 
 ![plot](./images/Screenshot%202024-12-09%20131627.png)
 
 
 Run **streamlit run main.py** in the terminal for streamlit app
 
-<<<<<<< HEAD
-
-=======
->>>>>>> dd9cb9e (new commit)
 ## Upload 
 To upload the dataset in YOLO format to Azure Blob Storage, select the desired folder containing the dataset and click the Upload button to initiate the process. Upon successful upload, the system will generate and provide a version number associated with the stored dataset. Once it has been uploaded, it will give a success message.
 
@@ -113,7 +81,6 @@ To train the model using the downloaded dataset, click on the Train button. This
 
 - YOLOv8
 
-<<<<<<< HEAD
   - YOLOv8n
   - YOLOv8m
   - YOLOv8s
@@ -127,50 +94,19 @@ To train the model using the downloaded dataset, click on the Train button. This
   - YOLOv9m
   - YOLOv9c
   - YOLOv9e
-=======
-    - YOLOv8n
-    - YOLOv8m
-    - YOLOv8s
-    - YOLOv8l
-    - YOLOv8x
-
-- YOLOv9
-
-    - YOLOv9s
-    - YOLOv9t
-    - YOLOv9m
-    - YOLOv9c
-    - YOLOv9e
->>>>>>> dd9cb9e (new commit)
 
 Next, specify the number of epochs for training and the desired image size for the model. Once all selections are made, click on the Start Train button to begin the training process. Once after training got completed, you can download the model.
 
 ![plot](./images/Screenshot%202024-12-09%20172851.png)
 
-<<<<<<< HEAD
 ## convert 
 
 ### ONNX FORMAT
 
 Select the appropreate option from the given choices and click on the convert button to convert into onnx.
-=======
-## Convert 
-
-### ONNX FORMAT
-
-Select the appropriate one from the given options and click on convert. The options were shown below
-
->>>>>>> dd9cb9e (new commit)
 ![plot](./images/Screenshot%202024-12-09%20173432.png)
 
 ### TENSORRT FORMAT
 
-<<<<<<< HEAD
 Select the appropreate option from the given choices and click on the convert button to convert into tensorrt.
 ![plot](./images/Screenshot%202024-12-09%20173450.png)
-=======
-Select the appropriate one from the given options and click on convert. The options were shown below
-
-![plot](./images/Screenshot%202024-12-09%20173450.png)
-
->>>>>>> dd9cb9e (new commit)
